@@ -1,0 +1,38 @@
+<nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav" id="side-menu">
+                <li class="nav-header">
+                    <LEFTPROFILE/>
+                    <div class="logo-element">
+                        {{logo}}
+                    </div>
+                   
+                </li>
+                {{#each data}}
+                    
+                    
+                    {{#if isNested}}
+                        <li {{#if _.find(menuItems,{'url':page}) }}class="active"{{/if}}>
+                            <a href="#" aria-expanded="true"><i class="{{icon}}"></i> <span class="nav-label">{{label}}</span> <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level collapse in" aria-expanded="true" style="">
+                                {{#each menuItems}}
+                                    <li {{#if page == url}}class="active"{{/if}}><a href="/apex/{{url}}">{{label}}</a></li>
+                                    
+                                {{/each}}
+                            </ul>
+                        </li>
+                    {{else}}
+                        {{#each menuItems}}
+                            <li {{#if page == url}}class="active"{{/if}}>
+                                <a href="/apex/{{url}}" aria-expanded="false"><i class="{{icon}}"></i> <span class="nav-label">{{label}}</span>  </a>
+                            </li>
+                        {{/each}}
+                    {{/if}}
+                    
+                    
+                    
+                {{/each }}
+            </ul>
+
+        </div>
+    </nav>
